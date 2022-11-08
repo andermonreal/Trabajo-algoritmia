@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 
-/* Todos los atributos numÃ©ricos deben ser de tipo decimal, ya que despues de normalizarlos quedan en el intervalo [0,1] */
+/* Todos los atributos numéricos deben ser de tipo decimal, ya que despues de normalizarlos quedan en el intervalo [0,1] */
 typedef struct ejemplo {
 	bool gender;
 	double age;
