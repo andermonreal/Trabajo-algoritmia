@@ -10,8 +10,6 @@ typedef struct info {
 	double maxYearsEmployed;
 	double minCreditScore;
 	double maxCreditScore;
-	double minZipCode;	//Posiblemente no haya que normalizar el zip code pero por si acaso
-	double maxZipCode;
 	double minIncome;
 	double maxIncome;
 } info;
