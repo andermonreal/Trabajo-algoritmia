@@ -15,15 +15,15 @@ typedef struct ejemplo {
 	double debt;
 	marriedType married;
 	bankCustomerType bankCustomer;
-	/*char *industry;*/
+	/*char *industry;	No nos interesa*/		
 	ethniciType ethnicity;
 	double yearsEmployed;
-	/*bool priorDefault;	Ns q es este atributo pero es booleano*/
+	/*bool priorDefault;	No nos interesa tratarlo*/	
 	employedType employed;
 	double creditScore;
 	driverType driverLicense;
 	citizenType citizen;
-	/*double zipCode;*/
+	/*double zipCode;	No nos interesa*/
 	double income;
 	result approved; // valor real la clase que vamos a predecir. Debemos compararla con la prediccion para ver si hemos acertado o no
 	double distancia; // la lista esta ordenada ascendentemente en funcion del campo distancia, para que podamos tomar los k mas proximos

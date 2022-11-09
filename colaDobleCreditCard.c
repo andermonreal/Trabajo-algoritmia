@@ -31,7 +31,7 @@ void encolarUltimo(tipoColaC *c, genderType a, double b , double d, marriedType 
 	aux->elem.driverLicense = k;
 	aux->elem.citizen = l;
 	aux->elem.income = m;
-	aux->elem.approved;
+	aux->elem.approved = n;
 	aux->elem.distancia = -1;
 	aux->elem.esOutlier = false;
 	aux->sig = NULL;

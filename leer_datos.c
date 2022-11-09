@@ -25,11 +25,11 @@ void leer_datos(char *fichero, tipoColaC* cola, struct info *info) { // metemos 
 		}
 		//Adaptar los datos
 		genderType gender;
-		if(strcmp(datos[0], "1" == 0)){
-			gender = M;
+		if(strcmp(datos[0], "0") == 0){
+			gender = F;
 		}
 		else{
-			gender = F;
+			gender = M;
 		}
 		double age = atof(datos[1]);
 		double debt = atof(datos[2]);
