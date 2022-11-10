@@ -1,12 +1,12 @@
 CC=gcc
 CFLAGS=-Wall
-DEPENDENCIAS=colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o Main.o normalizar.o
+DEPENDENCIAS=colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o main1.o normalizar.o
 
-all: Main
-	./Main
+all: main1
+	./main1
 
-Main: $(DEPENDENCIAS)
-	$(CC) $(CFLAGS) $(DEPENDENCIAS) -lm -o Main
+main1: $(DEPENDENCIAS)
+	$(CC) $(CFLAGS) $(DEPENDENCIAS) -lm -o main1
 
 colaDobleCreditCard.o: colaDobleCreditCard.c colaDobleCreditCard.h
 	$(CC) $(CFLAGS) -c colaDobleCreditCard.c
@@ -20,11 +20,11 @@ leer_datos.o: leer_datos.c leer_datos.h
 listaOrdenadaEjemplos.o: listaOrdenadaEjemplos.c listaOrdenadaEjemplos.h
 	$(CC) $(CFLAGS) -c listaOrdenadaEjemplos.c
 
-Main.o: Main.c
-	$(CC) $(CFLAGS) -c Main.c
+main1.o: main1.c
+	$(CC) $(CFLAGS) -c main1.c
 
 normalizar.o: normalizar.c normalizar.h
 	$(CC) $(CFLAGS) -c normalizar.c
 
 clean:
-	rm -f *.o Main
+	rm -f *.o main1
