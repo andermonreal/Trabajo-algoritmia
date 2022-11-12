@@ -1,0 +1,12 @@
+Gender,Age,Debt,Married,BankCustomer,Industry,Ethnicity,YearsEmployed,PriorDefault,Employed,CreditScore,DriversLicense,Citizen,ZipCode,Income,Approved
+
+0,58.67,4.46,1,1,Materials [NADA],Black,3.04,1 [NADA],1,6,0,ByBirth,00043 [NADA],560,1
+0,24.5,0.5,1,1,Materials,Black,1.5,1,0,0,0,ByBirth,00280,824,1
+1,27.83,1.54,1,1,Industrials,White,3.75,1,1,5,1,ByBirth,00100,3,1
+1,20.17,5.625,1,1,Industrials,White,1.71,1,0,0,0,ByOtherMeans,00120,0,1
+1,32.08,4.0,1,1,CommunicationServices,White,2.5,1,0,0,1,ByBirth,00360,0,1
+1,33.17,1.04,1,1,Transport,Black,6.5,1,0,0,1,ByBirth,00164,31285,1
+0,22.92,11.585,1,1,InformationTechnology,White,0.04,1,0,0,0,ByBirth,00080,1349,1
+
+
+ESTO LO HE CREADO PARA GUIARME YO (MONRE)
