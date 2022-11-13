@@ -1,7 +1,7 @@
 all: creditCard
 	./creditCard
 
-main1: colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o creditCard.o normalizar.o
+creditCard: colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o creditCard.o normalizar.o
 	gcc -Wall colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o creditCard.o normalizar.o -lm -o creditCard
 
 colaDobleCreditCard.o: colaDobleCreditCard.c colaDobleCreditCard.h
