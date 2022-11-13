@@ -2,8 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include "info.h"
-#include "macros.h"
+
 #include "colaDobleCreditCard.h"
+
+double max(double a, double b);
+
+double min(double a, double b);
 
 void leer_datos(char *fichero, tipoColaC* cola, struct info *info) { // metemos los datos del CSV en una cola doble
 	FILE* archivo = fopen(fichero, "r");
@@ -123,4 +127,18 @@ void leer_datos(char *fichero, tipoColaC* cola, struct info *info) { // metemos 
 		info->maxIncome = max(info->maxIncome, income);
 	}
 	fclose(archivo);
+}
+
+double max(double a, double b){
+	if(a < b)
+		return b;
+	else
+		return a;
+}
+
+double min(double a, double b){
+	if(a < b)
+		return a;
+	else
+		return b;
 }
