@@ -41,7 +41,7 @@ void insertar(tipoLista *lista, tipoElementoLista elem) {
 
 void eliminarMenor(tipoLista *lista) {
 	if (esNulaLista(*lista)) {
-		printf("Error en eliminarMenor. La lista esta vacia.\n");
+		printf("Error en eliminarMenor. La lista está vacía.\n");
 		exit(-1);
 	}
 	celdaLista *tmp = lista->ini;
@@ -97,4 +97,24 @@ bool estaElemento(tipoLista lista, tipoElementoLista elem) {
 
 bool esNulaLista(tipoLista lista) {
 	return lista.ini == NULL;
+}
+
+void imprimirLista (tipoLista l){
+	celdaLista *q;
+	int i;
+	if(esNulaLista(l)){
+		printf("Error, lista nula");
+		exit(-1);
+	}
+	q = l.ini;
+	while(q->sig != NULL){
+		printf("\t%lf", q->elem.distancia);
+		printf(" %c", q->elem.approved == Y? 'Y' : 'N');
+		q = q->sig;
+		i++;
+	}
+	printf("\t%lf", q->elem.distancia);
+	printf(" %c", q->elem.approved == Y? 'Y' : 'N');
+	printf("\n");
+	printf("\n%d\n", i);
 }

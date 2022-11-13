@@ -3,7 +3,7 @@
 #include "colaDobleCreditCard.h"
 #include <stdbool.h>
 
-void nuevaColaDC(tipoColaC*c) {
+void nuevaColaCC(tipoColaC*c) {
 	c->ini = NULL;
 	c->fin = NULL;
 }

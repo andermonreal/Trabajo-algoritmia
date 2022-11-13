@@ -3,7 +3,7 @@
 #include "info.h"
 
 void normalizar(tipoColaC cola, struct info info) {
-	// Recorremos la lista para normalizar los datos
+// Recorremos la lista para normalizar los datos
 	celdaColaC *aux = cola.ini;
 	while (aux != NULL) {
 		aux->elem.age = (aux->elem.age - info.minAge) / (info.maxAge - info.minAge);

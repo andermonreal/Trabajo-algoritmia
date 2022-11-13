@@ -23,7 +23,7 @@ void leer_datos(char *fichero, tipoColaC* cola, struct info *info) { // metemos 
 			token = strtok(NULL, delimitador); // siguiente valor hasta la coma
 			i++;
 		}
-		//Adaptar los datos
+		//Adaptar los datos ya que en el csv todo son strings y para calcular las distancias necesitamos datos numéricos y los que son de verdadero o falso los pasamos a algo que entendamos
 		genderType gender;
 		if(strcmp(datos[0], "0") == 0){
 			gender = F;
@@ -71,7 +71,7 @@ void leer_datos(char *fichero, tipoColaC* cola, struct info *info) { // metemos 
 		//La columna de prior default tampoco nos interesa, no la tratamos
 
 		employedType employed;
-		if(strcmp(datos[9], "1") == 0){
+		if(strcmp(datos[9], "0") != 0){
 			employed = Y;
 		}
 		else{
