@@ -19,7 +19,7 @@ int main() {
 
 	tipoColaC datasetEntrenamiento;
 	nuevaColaCC(&datasetEntrenamiento);
-	leer_datos("entrenamiento1.csv", &datasetEntrenamiento, &info);
+	leer_datos("credit_card.csv", &datasetEntrenamiento, &info);
 
 
 // normalizamos el dataset en la cola que lo hemos introducido
