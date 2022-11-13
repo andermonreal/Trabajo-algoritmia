@@ -31,5 +31,3 @@ typedef struct ejemplo {
 } ejemplo;
 
 #endif
-
-
