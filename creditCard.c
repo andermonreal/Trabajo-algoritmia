@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "info.h"
 #include "tipos.h"
 #include "normalizar.h"
