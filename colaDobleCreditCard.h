@@ -16,12 +16,14 @@ typedef struct tipoCDC {
 	celdaColaC* fin;
 }tipoColaC;
 
-void nuevaColaDC(tipoColaC*);
+void nuevaColaCC(tipoColaC*);
 
 bool esNulo(tipoColaC);
 
 void encolarUltimo(tipoColaC *, genderType, double, double, marriedType, bankCustomerType, ethniciType, double, employedType, double, driverType, citizenType, double, result);
 
 void desencolarPrimero(tipoColaC *);
+
+tipoElementoColaC elemPrimero(tipoColaC);
 
 #endif

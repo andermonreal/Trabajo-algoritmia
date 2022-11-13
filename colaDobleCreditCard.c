@@ -61,3 +61,7 @@ void desencolarPrimero(tipoColaC *c) {
 		free(aux);
 	}
 }
+
+tipoElementoColaC elemPrimero(tipoColaC cd){
+	return(cd.ini -> elem);
+	}
