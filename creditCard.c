@@ -9,7 +9,7 @@
 #include "colaDobleCreditCard.h"
 #include "listaOrdenadaEjemplos.h"
 
-bool aplicar_knn(tipoColaC, ejemplo *, int);
+bool aplicar_knn_elemento(tipoColaC, ejemplo *, int);
 double calcularDistancia(ejemplo, ejemplo);
 result obtenerClaseMasPrometedora(tipoLista);
 
@@ -116,7 +116,7 @@ int main() {
 
 	//Comienzo del KNN
 		printf("\nComienzo de la clasificación...\n");
-		bool exito = aplicar_knn(datasetEntrenamiento, datoAevaluar.ini, K); //aplicamos knn al elemento nuevo que hemos introducido, comparándolo con el resto de elementos de nuestro dataset
+		bool exito = aplicar_knn_elemento(datasetEntrenamiento, datoAevaluar.ini, K); //aplicamos knn al elemento nuevo que hemos introducido, comparándolo con el resto de elementos de nuestro dataset
 		if(exito){
 			printf("La tarjeta de crédito ha sido aprobada\n\n");
 		}
@@ -131,7 +131,7 @@ int main() {
 	} while (ch == 's');
 }
 
-bool aplicar_knn(tipoColaC dataset, ejemplo *ejemplo, int K) {
+bool aplicar_knn_elemento(tipoColaC dataset, ejemplo *ejemplo, int K) {
 	tipoLista lista;
 	nuevaLista(&lista); // nueva lista ordenada de menor a mayor
 
