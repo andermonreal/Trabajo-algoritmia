@@ -1,8 +1,6 @@
-all: creditCard
-	./creditCard
 
-creditCard: colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o creditCard.o normalizar.o
-	gcc -Wall colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o creditCard.o normalizar.o -lm -o creditCard
+Main: colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o Main.o normalizar.o
+	gcc -Wall colaDobleCreditCard.o info.o leer_datos.o listaOrdenadaEjemplos.o Main.o normalizar.o -lm -o Main
 
 colaDobleCreditCard.o: colaDobleCreditCard.c colaDobleCreditCard.h
 	gcc -Wall -c colaDobleCreditCard.c
@@ -16,11 +14,11 @@ leer_datos.o: leer_datos.c leer_datos.h
 listaOrdenadaEjemplos.o: listaOrdenadaEjemplos.c listaOrdenadaEjemplos.h
 	gcc -Wall -c listaOrdenadaEjemplos.c
 
-creditCard.o: creditCard.c
-	gcc -Wall -c creditCard.c
+Main.o: Main.c
+	gcc -Wall -c Main.c
 
 normalizar.o: normalizar.c normalizar.h
 	gcc -Wall -c normalizar.c
 
 clean:
-	rm -f *.o creditCard
+	rm -f *.o Main

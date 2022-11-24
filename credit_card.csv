@@ -569,9 +569,6 @@ Gender,Age,Debt,Married,BankCustomer,Industry,Ethnicity,YearsEmployed,PriorDefau
 1,39.08,6.0,1,1,CommunicationServices,White,1.29,1,1,5,1,ByBirth,00108,1097,1
 1,31.67,0.83,1,1,Utilities,White,1.335,1,1,8,1,ByBirth,00303,3290,1
 1,41.0,0.04,1,1,Education,White,0.04,0,1,1,0,ByOtherMeans,00560,0,1
-1,48.5,4.25,1,1,CommunicationServices,White,0.125,1,0,0,1,ByBirth,00225,0,1
-1,32.67,9.0,0,0,Industrials,Black,5.25,1,0,0,1,ByBirth,00154,0,1
-0,28.08,15.0,0,0,Education,Other,0.0,1,0,0,0,ByBirth,00000,13212,1
 1,73.42,17.75,1,1,Healthcare,Latino,0.0,1,0,0,1,ByBirth,00000,0,1
 1,64.08,20.0,1,1,Utilities,Black,17.5,1,1,9,1,ByBirth,00000,1000,1
 1,51.58,15.0,1,1,Energy,White,8.5,1,1,9,0,ByBirth,00000,0,1
@@ -637,8 +634,6 @@ Gender,Age,Debt,Married,BankCustomer,Industry,Ethnicity,YearsEmployed,PriorDefau
 1,24.08,9.0,1,1,ConsumerStaples,White,0.25,0,0,0,1,ByBirth,00000,0,0
 1,25.58,0.335,1,1,Financials,Black,3.5,0,0,0,1,ByBirth,00340,0,0
 0,35.17,3.75,1,1,Healthcare,Latino,0.0,0,1,6,0,ByBirth,00000,200,0
-1,48.08,3.75,1,1,ConsumerDiscretionary,Asian,1.0,0,0,0,0,ByBirth,00100,2,0
-0,15.83,7.625,1,1,Materials,White,0.125,0,1,1,1,ByBirth,00000,160,0
 0,22.5,0.415,1,1,ConsumerDiscretionary,White,0.335,0,0,0,1,ByOtherMeans,00144,0,0
 1,21.5,11.5,1,1,ConsumerDiscretionary,White,0.5,1,0,0,1,ByBirth,00100,68,0
 0,23.58,0.83,1,1,Materials,White,0.415,0,1,1,1,ByBirth,00200,11,0
@@ -676,5 +671,5 @@ Gender,Age,Debt,Married,BankCustomer,Industry,Ethnicity,YearsEmployed,PriorDefau
 0,22.67,0.75,1,1,Energy,White,2.0,0,1,2,1,ByBirth,00200,394,0
 0,25.25,13.5,0,0,Healthcare,Latino,2.0,0,1,1,1,ByBirth,00200,1,0
 1,17.92,0.205,1,1,ConsumerStaples,White,0.04,0,0,0,0,ByBirth,00280,750,0
-1,35.0,3.375,1,1,Energy,Black,8.29,0,0,0,1,ByBirth,00000,0,0
+
 
