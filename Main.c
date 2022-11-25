@@ -11,7 +11,7 @@
 
 
 void aplicar_wilson(tipoColaC, int);
-bool aplicar_knn_eficiencia(tipoColaC, ejemplo *, int);
+void aplicar_knn_eficiencia(tipoColaC, ejemplo *, int, bool *, int *, int *, int *, int *);
 bool aplicar_knn_elemento(tipoColaC, ejemplo *, int);
 double calcularDistancia(ejemplo, ejemplo);
 result obtenerClaseMasPrometedora(tipoLista, int);
@@ -19,107 +19,101 @@ result obtenerClaseMasPrometedora(tipoLista, int);
 void mostrar_ejemplo(ejemplo);
 
 int main() {
-	int x;
+	char ch;
 
-	struct info info;
-	inicializarInfo(&info);
+	do{
+		int x;
 
-	printf("Si quieres calcular la precisión del algoritmo pulsa 1, si quieres insertar un nuevo elemento a comprobar pulsa 2, y si quieres aplicar wilson pulsa 3: ");
-	scanf(" %d", &x);
 
-	switch(x){
-		case 1:
-			char fichero[100];
-			tipoColaC datasetEntrenamiento;
-			nuevaColaCC(&datasetEntrenamiento);
-			printf("Introduce el nombre del dataset de entrenamiento: ");
-			scanf("%s", fichero);
-			leer_datos(fichero, &datasetEntrenamiento, &info);
+		struct info info;
+		inicializarInfo(&info);
 
-			tipoColaC datasetPrueba;
-			nuevaColaCC(&datasetPrueba);
-			printf("\nIntroduce el nombre del dataset de prueba: ");
-			scanf("%s", fichero);
-			leer_datos(fichero, &datasetPrueba, &info);
+		printf("Si quieres calcular la precisión del algoritmo pulsa 1, si quieres insertar un nuevo elemento a comprobar pulsa 2, y si quieres aplicar wilson pulsa 3: ");
+		scanf(" %d", &x);
 
-			// normalizamos ambos datasets
-			normalizar(datasetEntrenamiento, info);
-			normalizar(datasetPrueba, info);
+		switch(x){
+			case 1:
+				char fichero[100];
+				tipoColaC datasetAjuste;
+				nuevaColaCC(&datasetAjuste);
+				printf("Introduce el nombre del dataset que quieras estudiar: ");
+				scanf("%s", fichero);
+				leer_datos(fichero, &datasetAjuste, &info);
 
-			printf("Dataset de entrenamiento (normalizado):\n");
-			celdaColaC *c = datasetEntrenamiento.ini;
-			while (c != NULL) {
-				mostrar_ejemplo(c->elem);
-				c = c->sig;
-			}
+				// normalizamos ambos datasets
+				normalizar(datasetAjuste, info);
 
-			printf("Dataset de prueba (normalizado):\n");
-			c = datasetPrueba.ini;
-			while (c != NULL) {
-				mostrar_ejemplo(c->elem);
-				c = c->sig;
-			}
+				printf("Dataset (normalizado):\n");
+				celdaColaC *c = datasetAjuste.ini;
+				while (c != NULL) {
+					mostrar_ejemplo(c->elem);
+					c = c->sig;
+				}
 
-			char ch;
-			do {
 				int K;
 				printf("\nIntroduce K, para elegir los K vecinos mas cercanos: ");
 				scanf("%d", &K);
 
 				printf("\nComienzo de la clasificacion...\n");
-				int aciertos = 0, count = 0;
-				celdaColaC *c = datasetPrueba.ini;
+				int aciertos = 0, cont = 0, tn, tp, fn, fp;
+				bool exito;
+				c = datasetAjuste.ini;
 				while (c != NULL) {
-					printf("Ejemplo #%d\n", count + 1);
+					printf("Ejemplo #%d\n", cont + 1);
 					mostrar_ejemplo(c->elem);
-					bool exito = aplicar_knn_eficiencia(datasetEntrenamiento, &c->elem, K); // aplicamos knn a cada elemento del dataset de prueba
+					aplicar_knn_eficiencia(datasetAjuste, &c->elem, K, &exito, &tp, &tn, &fp, &fn); // aplicamos knn a cada elemento del dataset de prueba
 					if (exito) {
 						aciertos++;
 					}
-					count++;
+					cont++;
 					c = c->sig;
 					printf("\n");
 				}
+
 				printf("Fin de la clasificación\n\n");
 				printf("Número de aciertos: %d\n", aciertos);
-				printf("Número de pruebas: %d\n", count);
+				printf("Número de pruebas: %d\n", cont);
 
-				if (count > 0) {
-					float precision = ((float)aciertos / count) * 100;
-					printf("Precision total: %.2f%%\n", precision);
+				if (cont > 0) {
+					float accuracy = ((float)aciertos / cont) * 100;
+					printf("Accuracy: %.2f%%\n", accuracy);
+
+					float precision = (float)tp/(tp+fp);
+					printf("Precision: %.2f%%\n", precision);
+
+					float recall = (float)tp/(tp+fn);
+					printf("Recall: %.2f%%\n", recall);
 				}
 
-				printf("Desea repetir el entrenamiento (s/n)? ");
+
+				printf("Desea repetir (s/n)? ");
 				scanf(" %c", &ch);
 
 				if (ch == 's') { // resetear valores del dataset de entrenamiento
-					celdaColaC *c = datasetEntrenamiento.ini;
+					celdaColaC *c = datasetAjuste.ini;
 					while (c != NULL) {
 						c->elem.distancia = -1;
 						c->elem.esOutlier = false;
 						c = c->sig;
 					}
 				}
-			} while (ch == 's');
-			break;
+				break;
 
-		case 2:
+			case 2:
 
-			struct ejemplo elemento;
+				struct ejemplo elemento;
 
-			tipoColaC datasetEntrenamiento1;
-			nuevaColaCC(&datasetEntrenamiento1);
-			leer_datos("credit_card.csv", &datasetEntrenamiento1, &info);
-
-
-		// normalizamos el dataset en la cola que lo hemos introducido
-			normalizar(datasetEntrenamiento1, info);
+				tipoColaC datasetEntrenamiento1;
+				nuevaColaCC(&datasetEntrenamiento1);
+				leer_datos("credit_card.csv", &datasetEntrenamiento1, &info);
 
 
-			do {
+			// normalizamos el dataset en la cola que lo hemos introducido
+				normalizar(datasetEntrenamiento1, info);
+
+
 				char strin[10];
 
-				int K;
 				printf("\nIntroduce K, para elegir los K vecinos mas cercanos: ");
 				scanf("%d", &K);
 
@@ -209,7 +203,7 @@ int main() {
 
 			//Comienzo del KNN
 				printf("\nComienzo de la clasificación...\n");
-				bool exito = aplicar_knn_elemento(datasetEntrenamiento1, datoAevaluar.ini, K); //aplicamos knn al elemento nuevo que hemos introducido, comparándolo con el resto de elementos de nuestro dataset
+				exito = aplicar_knn_elemento(datasetEntrenamiento1, datoAevaluar.ini, K); //aplicamos knn al elemento nuevo que hemos introducido, comparándolo con el resto de elementos de nuestro dataset
 				if(exito){
 					printf("La tarjeta de crédito ha sido aprobada\n\n");
 				}
@@ -218,20 +212,30 @@ int main() {
 				}
 				printf("Fin de la clasificación\n\n");
 
-				printf("¿Desea introducir un nuevo elemento (s/n)? ");
+				printf("¿Desea repetir (s/n)? ");
 				scanf(" %c", &ch);
+				break;
+			case 3:
+				tipoColaC dataset;
+				nuevaColaCC(&dataset);
+				leer_datos("credit_card.csv", &dataset, &info);
 
-			} while (ch == 's');
-			break;
-		case 3:
-			int K;
-			printf("\nIntroduce K, para elegir los K vecinos mas cercanos: ");
-			scanf("%d", &K);
-			printf("Comienzo algoritmo de wilson.\n");
-			aplicar_wilson(datasetEntrenamiento, K);
-			printf("Fin algoritmo de wilson.\n");
-			break;
-	}
+			// normalizamos el dataset en la cola que lo hemos introducido
+				normalizar(dataset, info);
+
+				printf("\nIntroduce K, para elegir los K vecinos mas cercanos: ");
+				scanf("%d", &K);
+				printf("Comienzo algoritmo de wilson.\n");
+				aplicar_wilson(dataset, K);
+				printf("Fin algoritmo de wilson.\n");
+
+				printf("\n¿Desea repetir (s/n)? ");
+				scanf(" %c", &ch);
+				break;
+		}
+
+	}while(ch == 's');
+
 }
 
 
@@ -242,15 +246,16 @@ void mostrar_ejemplo(ejemplo ejemplo) {
 
 	printf("[Gender: %c, Age: %.2lf, Debt: %.2lf, Married: %c, BankCustomer: %c, Ethnicity: %s, YearsEmployed: %.2lf, Employed: %c, CreditScore: %.2lf, DriverLicense: %c, Citizen: %s, Income: %.2lf]\n",
 		ejemplo.gender == M? 'M' : 'F', ejemplo.age, ejemplo.debt, ejemplo.married == Y? 'Y' : 'N', ejemplo.bankCustomer == Y? 'Y' : 'N',
-		ethnicity[ejemplo.ethnicity], ejemplo.yearsEmployed, ejemplo.employed, ejemplo.creditScore, ejemplo.driverLicense == Y? 'Y' : 'N',
+		ethnicity[ejemplo.ethnicity], ejemplo.yearsEmployed, ejemplo.employed == Y? 'Y' : 'N', ejemplo.creditScore, ejemplo.driverLicense == Y? 'Y' : 'N',
 		citizen[ejemplo.citizen], ejemplo.income);
 }
 
 void aplicar_wilson(tipoColaC dataset, int K) {
-	int elim = 0;
+	int elim = 0, tn = 0, tp = 0, fn = 0, fp = 0;
+	bool exito;
 	celdaColaC *c = dataset.ini;
 	while (c != NULL) {
-		bool exito = aplicar_knn_eficiencia(dataset, &c->elem, K);
+		aplicar_knn_eficiencia(dataset, &c->elem, K, &exito, &tp, &tn, &fp, &fn);
 		if (!exito) {
 			printf("Se ha encontrado un outlier: \n");
 			mostrar_ejemplo(c->elem);
@@ -313,7 +318,7 @@ bool aplicar_knn_elemento(tipoColaC dataset, ejemplo *ejemplo, int K) {
 
 }
 
-bool aplicar_knn_eficiencia(tipoColaC dataset, ejemplo *ejemplo, int K) {
+void aplicar_knn_eficiencia(tipoColaC dataset, ejemplo *ejemplo, int K, bool *b, int *tp, int *tn, int *fp, int *fn) {
 	tipoLista lista;
 	nuevaLista(&lista); // nueva lista ordenada
 
@@ -347,16 +352,30 @@ bool aplicar_knn_eficiencia(tipoColaC dataset, ejemplo *ejemplo, int K) {
 		c = c->sig;
 	}
 	result clase = obtenerClaseMasPrometedora(lista, K);
-
 	// imprimimos resultados de la prediccion
 	printf("Clase predicha: %c\n", clase == Y? 'Y' : 'N');
 	printf("Clase real: %c\n", ejemplo->approved == Y? 'Y' : 'N');
-	if (clase == ejemplo->approved)
+	if (clase == ejemplo->approved){
 		printf("Prediccion correcta\n");
-	else
+		if(ejemplo->approved == Y){
+			*tp = *tp + 1;
+		}
+		else{
+			*tn = *tn + 1;
+		}
+	}
+	else{
 		printf("Prediccion incorrecta\n");
+		if(ejemplo->approved == Y){
+			*fn = *fn + 1;
+		}
+		else{
+			*fp = *fp + 1;
+		}
+	}
+	printf("%d\t%d\t%d\t%d\t", *tp, *tn, *fp, *fn);
 
-	return clase == ejemplo->approved;
+	*b = clase == ejemplo->approved;
 }
 
 double calcularDistancia(ejemplo ejemplo1, ejemplo ejemplo2) {
@@ -389,6 +408,7 @@ result obtenerClaseMasPrometedora(tipoLista lista, int K) {
 		if (c->elem.approved == Y) {
 			distanciaTotalClaseY += c->elem.distancia;
 			countClaseY++;
+
 		} else {
 			distanciaTotalClaseN += c->elem.distancia;
 			countClaseN++;
