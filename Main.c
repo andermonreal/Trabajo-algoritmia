@@ -196,7 +196,7 @@ int main() {
 				tipoColaC datoAevaluar;
 				nuevaColaCC(&datoAevaluar);
 
-				encolarUltimo(&datoAevaluar, elemento.gender, elemento.age, elemento.debt, elemento.married, elemento.bankCustomer, elemento.ethnicity, elemento.yearsEmployed, elemento.employed, elemento.creditScore, elemento.driverLicense, elemento.citizen, elemento.income, N);
+				encolarUltimo(&datoAevaluar, elemento.id, elemento.gender, elemento.age, elemento.debt, elemento.married, elemento.bankCustomer, elemento.ethnicity, elemento.yearsEmployed, elemento.employed, elemento.creditScore, elemento.driverLicense, elemento.citizen, elemento.income, N);
 			//de momento comparamos solo con un vecino
 				normalizar(datoAevaluar, info);
 
@@ -221,7 +221,7 @@ int main() {
 				nuevaColaCC(&dataset);
 				printf("Introduce el nombre del dataset que quieras estudiar: ");
 				scanf("%s", fichero);
-				leer_datos(fichero, &datasetAjuste, &info);
+				leer_datos(fichero, &dataset, &info);
 
 			// normalizamos el dataset en la cola que lo hemos introducido
 				normalizar(dataset, info);
