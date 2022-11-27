@@ -196,7 +196,7 @@ int main() {
 				tipoColaC datoAevaluar;
 				nuevaColaCC(&datoAevaluar);
 
-				encolarUltimo(&datoAevaluar, elemento.id, elemento.gender, elemento.age, elemento.debt, elemento.married, elemento.bankCustomer, elemento.ethnicity, elemento.yearsEmployed, elemento.employed, elemento.creditScore, elemento.driverLicense, elemento.citizen, elemento.income, N);
+				encolarUltimo(&datoAevaluar, elemento.gender, elemento.age, elemento.debt, elemento.married, elemento.bankCustomer, elemento.ethnicity, elemento.yearsEmployed, elemento.employed, elemento.creditScore, elemento.driverLicense, elemento.citizen, elemento.income, N);
 			//de momento comparamos solo con un vecino
 				normalizar(datoAevaluar, info);
 
